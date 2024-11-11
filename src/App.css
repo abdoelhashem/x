@@ -1,0 +1,15 @@
+.container {
+
+  width: 300px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease;
+    margin-top: 15px;
+}
+.vc{
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+}

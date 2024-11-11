@@ -1,0 +1,81 @@
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #555;
+}
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 40px;
+    aspect-ratio: 1;
+     --c: linear-gradient(#2069c2 0 0);
+     --m: radial-gradient(farthest-side,#0081b4 90%,#b43c3c00);
+    background: var(--c),var(--m),var(--c);
+    background-size:16px 8px,10px 10px; 
+    background-repeat: no-repeat;
+    animation: 
+      l19-1 .5s infinite alternate,
+      l19-2  4s infinite linear .5s;
+  }
+  .vv {
+    
+        width: 40px;
+        aspect-ratio: 1;
+         --c: linear-gradient(#ffffff 0 0);
+         --m: radial-gradient(farthest-side,#8afbff 90%,#b43c3c00);
+        background: var(--c),var(--m),var(--c);
+        background-size:16px 8px,10px 10px; 
+        background-repeat: no-repeat;
+        animation: 
+          l19-1 .5s infinite alternate,
+          l19-2  4s infinite linear .5s;
+      
+  }
+  @keyframes l19-1 {
+    0%,10%   {background-position: calc(50% - 8px) 50%,50% 10%,calc(50% + 8px)   50%}
+    80%,100% {background-position: -20px           50%,50% 50%,calc(100% + 20px) 50%}
+  }
+  @keyframes l19-2 {
+    0% ,24.99% {transform: rotate(0)}
+    25%,49.99% {transform: rotate(90deg)}
+    50%,74.99% {transform: rotate(180deg)}
+    75%,100%   {transform: rotate(270deg)}
+  }
+.message-box {
+    background-color: #f9fbfc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+    transform: scale(1.02);
+    box-shadow: 0 6px 13px rgba(0, 0, 0, 0.1);
+}
+
+.message-content {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 10px;
+}
+.message-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #888;
+}
+.reply-btn {
+    background-color: #87a9bb;
+    color: white;
+    padding: 3px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.reply-btn:hover {
+    background-color: #5a8098;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
