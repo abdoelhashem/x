@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     if (window.OneSignal) {
-      // تهيئة OneSignal بعد تحميل السكربت
+      // تهيئة OneSignal
       window.OneSignal.push(function () {
         window.OneSignal.init({
           appId: 'ab1fe121-df44-4a43-a3b4-e112444f195a', // استبدل بـ appId الخاص بك
@@ -19,8 +19,8 @@ function App() {
         // التحقق من حالة الاشتراك عند تحميل الصفحة
         window.OneSignal.getSubscription().then(function (isSubscribed) {
           setIsSubscribed(isSubscribed);
+          // إذا كان غير مشترك، نعرض المطالبة
           if (!isSubscribed) {
-            // إذا لم يكن المستخدم مشتركًا، نعرض المطالبة
             window.OneSignal.showSlidedownPrompt();
           }
         });
@@ -29,13 +29,14 @@ function App() {
         window.OneSignal.on('subscriptionChange', function (isSubscribed) {
           setIsSubscribed(isSubscribed);
           if (isSubscribed) {
-            // إشعار عندما يتم تفعيل الإشعارات
             console.log('تم تفعيل الإشعارات!');
             alert('تم تفعيل الإشعارات بنجاح!');
           } else {
-            // إشعار عندما يتم رفض الإشعارات
             console.log('تم رفض الإشعارات!');
             alert('تم رفض الإشعارات!');
+
+            // عرض المطالبة فورًا بعد الرفض
+            window.OneSignal.showSlidedownPrompt(); // نعرض المطالبة مباشرة بعد الرفض
           }
         });
       });
@@ -49,8 +50,8 @@ function App() {
         window.OneSignal.sendSelfNotification(
           'عنوان الإشعار',
           'محتوى الإشعار',
-          'https://your-icon-url.com',
-          'https://your-url.com'
+          'https://your-icon-url.com', // ضع رابط الأيقونة
+          'https://your-url.com' // ضع رابط الموقع عند الضغط على الإشعار
         );
       });
     }
