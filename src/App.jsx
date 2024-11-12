@@ -6,19 +6,19 @@ import Container from './container'
 import OneSignal from 'react-onesignal';
 function App() {
   useEffect(() => {
-    // تهيئة OneSignal
-    window.OneSignal = window.OneSignal || [];
-    OneSignal.push(function () {
-      OneSignal.init({
-        appId: 'أدخل هنا معرف التطبيق الخاص بك', // استبدل بـ App ID الخاص بك
+    // تهيئة OneSignal فقط بعد تحميل السكربت
+    if (window.OneSignal) {
+      OneSignal.push(function () {
+        OneSignal.init({
+          appId: 'أدخل هنا معرف التطبيق الخاص بك',  // استبدله بـ App ID الخاص بك
+        });
       });
-    });
 
-    // عرض مطالبة بالسماح بالإشعارات
-    OneSignal.push(function () {
-      OneSignal.showSlidedownPrompt();
-    });
-
+      // عرض مطالبات الإشعارات
+      OneSignal.push(function () {
+        OneSignal.showSlidedownPrompt();
+      });
+    }
   }, []);
   return (
     <div>
