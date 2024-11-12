@@ -13,7 +13,7 @@ function App() {
       // تهيئة OneSignal
       window.OneSignal.push(function () {
         window.OneSignal.init({
-          appId: 'ab1fe121-df44-4a43-a3b4-e112444f195a', // استبدل بـ appId الخاص بك
+          appId: '57196203-d4da-4192-852d-f8adf84cd921', // استبدل بـ appId الخاص بك
           allowLocalhostAsSecureOrigin: true, // يسمح للمطورين بتشغيل الإشعارات على localhost أثناء التطوير
         });
 
