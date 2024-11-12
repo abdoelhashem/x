@@ -8,13 +8,21 @@ function App() {
   const [isSubscribed, setIsSubscribed] = useState(false);
 
   useEffect(() => {
-    // تأكد من تحميل OneSignal أولاً قبل استخدامه
     if (window.OneSignal) {
-      // تهيئة OneSignal فقط بعد تحميل السكربت
+      // تهيئة OneSignal بعد تحميل السكربت
       window.OneSignal.push(function () {
         window.OneSignal.init({
           appId: 'ab1fe121-df44-4a43-a3b4-e112444f195a', // استبدل بـ appId الخاص بك
           allowLocalhostAsSecureOrigin: true, // يسمح للمطورين بتشغيل الإشعارات على localhost أثناء التطوير
+        });
+
+        // التحقق من حالة الاشتراك عند تحميل الصفحة
+        window.OneSignal.getSubscription().then(function (isSubscribed) {
+          setIsSubscribed(isSubscribed);
+          if (!isSubscribed) {
+            // إذا لم يكن المستخدم مشتركًا، نعرض المطالبة
+            window.OneSignal.showSlidedownPrompt();
+          }
         });
 
         // التعامل مع الاشتراك/الإلغاء
@@ -30,30 +38,9 @@ function App() {
             alert('تم رفض الإشعارات!');
           }
         });
-
-        // عرض المطالبة بعد تفاعل المستخدم مع الموقع
-        const userInteracted = localStorage.getItem('userInteracted');
-        if (userInteracted) {
-          // إذا تفاعل المستخدم بالفعل، اعرض المطالبة
-          window.OneSignal.showSlidedownPrompt();
-        }
-
-        // إضافة حدث تفاعل من المستخدم
-        window.addEventListener('click', () => {
-          localStorage.setItem('userInteracted', 'true');
-          window.OneSignal.showSlidedownPrompt();
-        });
       });
     }
-
-    // التأكد من حالة الاشتراك عند تحميل الصفحة
-    window.OneSignal.push(function () {
-      window.OneSignal.getSubscription().then(function (isSubscribed) {
-        setIsSubscribed(isSubscribed);
-      });
-    });
-
-  }, []); // تأكد من أن التأثير يحدث مرة واحدة فقط عند تحميل الصفحة
+  }, []); // التأكد من أن التأثير يحدث مرة واحدة فقط عند تحميل الصفحة
 
   const handleSendNotification = () => {
     // إرسال إشعار يدويًا
