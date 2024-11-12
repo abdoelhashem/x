@@ -10,7 +10,7 @@ function App() {
     if (window.OneSignal) {
       OneSignal.push(function () {
         OneSignal.init({
-          appId: 'أدخل هنا معرف التطبيق الخاص بك',  // استبدله بـ App ID الخاص بك
+          appId: 'ab1fe121-df44-4a43-a3b4-e112444f195a',  // استبدله بـ App ID الخاص بك
         });
       });
 
