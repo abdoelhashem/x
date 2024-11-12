@@ -7,28 +7,19 @@ import OneSignal from 'react-onesignal';
 function App() {
   useEffect(() => {
     // تهيئة OneSignal
-    OneSignal.init({
-      appId: 'ab1fe121-df44-4a43-a3b4-e112444f195a', // ضع الـ App ID الخاص بك هنا
-    }).then(() => {
-      console.log("تم تهيئة OneSignal");
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function () {
+      OneSignal.init({
+        appId: 'أدخل هنا معرف التطبيق الخاص بك', // استبدل بـ App ID الخاص بك
+      });
     });
 
-    // إظهار مطالبة السماح بالإشعارات
-    OneSignal.push(() => {
+    // عرض مطالبة بالسماح بالإشعارات
+    OneSignal.push(function () {
       OneSignal.showSlidedownPrompt();
     });
 
-    // الاستماع لإظهار الإشعار
-    OneSignal.on('notificationDisplay', (event) => {
-      console.log('تم عرض الإشعار:', event);
-    });
-
-    // الاستماع لنقرات الإشعار
-    OneSignal.on('notificationClick', (event) => {
-      console.log('تم النقر على الإشعار:', event);
-    });
   }, []);
-
   return (
     <div>
       <Container>
