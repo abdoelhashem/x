@@ -8,7 +8,14 @@ function Messages() {
     const [inp,setInp] = useState("");
 
     useEffect(() => {
-        fetch("https://cors-anywhere.herokuapp.com/http://mrhok.serv00.net/badrphphp/abd5/messages.json").then(response => response.json()).then(arr => {
+        fetch("https://cors-anywhere.herokuapp.com/http://mrhok.serv00.net/badrphphp/abd5/messages.json", {
+  method: 'GET',
+  headers: {
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
+    'If-Modified-Since': new Date().toISOString()
+  }
+}).then(response => response.json()).then(arr => {
             setData(arr);
             setLoader(false)
             console.log(arr);
@@ -18,7 +25,14 @@ function Messages() {
 
 
     const remov = (id) => {
-        fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=delete&id=${id}`).then(res => res.json()).then(d => {
+        fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=delete&id=${id}`, {
+  method: 'GET',
+  headers: {
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
+    'If-Modified-Since': new Date().toISOString()
+  }
+}).then(res => res.json()).then(d => {
             window.location.reload();
         })
     }
@@ -76,9 +90,23 @@ function Messages() {
 
                 <div className="gap-2 flex">
                     <button className="reply-btn" onClick={() => {
-                        fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=edit&key=show&newtxt=true&id=${aler}`).then(res => res.json()).then(d => {
+                        fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=edit&key=show&newtxt=true&id=${aler}`, {
+  method: 'GET',
+  headers: {
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
+    'If-Modified-Since': new Date().toISOString()
+  }
+}).then(res => res.json()).then(d => {
                         })
-                        fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=edit&key=reply&newtxt=${inp}&id=${aler}`).then(res => res.json()).then(d => {
+                        fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=edit&key=reply&newtxt=${inp}&id=${aler}`, {
+  method: 'GET',
+  headers: {
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
+    'If-Modified-Since': new Date().toISOString()
+  }
+}).then(res => res.json()).then(d => {
                             window.location.reload();
                         })
                     }}>رد</button>
@@ -101,14 +129,28 @@ function Messages() {
             <div className="message-box" >
             <p className="">{x.message}</p>
             </div>
-            <div className="message-box" >
-            <audio controls src={x.voice}></audio>
+            <div className="" >
+                {x.voice == "false" ? "" : <><audio className="w-full" controls src={x.voice}></audio></>}
             </div>
             <div className="flex justify-between">
             <button className="reply-btn">من؟</button>
             <button onClick={() => {
-                fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=edit&key=show&newtxt=false&id=${x.id}`).then(res => res.json()).then(d => {
-                    fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=edit&key=reply&newtxt=&id=${x.id}`).then(res => res.json()).then(d => {
+                fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=edit&key=show&newtxt=false&id=${x.id}`, {
+  method: 'GET',
+  headers: {
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
+    'If-Modified-Since': new Date().toISOString()
+  }
+}).then(res => res.json()).then(d => {
+                    fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=edit&key=reply&newtxt=&id=${x.id}`, {
+  method: 'GET',
+  headers: {
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
+    'If-Modified-Since': new Date().toISOString()
+  }
+}).then(res => res.json()).then(d => {
                     window.location.reload()
                     
                     })

@@ -16,7 +16,14 @@ const Sendbox = () => {
     }
     const delate_all = () => {
             setIne(false);
-            fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=delete_all`).then(b => {
+            fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=delete_all`, {
+  method: 'GET',
+  headers: {
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
+    'If-Modified-Since': new Date().toISOString()
+  }
+}).then(b => {
                 window.location.reload()
             })
     }
