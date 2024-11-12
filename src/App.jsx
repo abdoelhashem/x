@@ -9,6 +9,7 @@ function App() {
 
   useEffect(() => {
     if (window.OneSignal) {
+      console.log('OneSignal is loaded');
       // تهيئة OneSignal
       window.OneSignal.push(function () {
         window.OneSignal.init({
@@ -33,20 +34,23 @@ function App() {
           }
         });
       });
+    } else {
+      console.error('OneSignal is not loaded!');
     }
   }, []); // التأكد من أن التأثير يحدث مرة واحدة فقط عند تحميل الصفحة
 
   const handleRequestNotifications = () => {
-    // طلب الاشتراك في الإشعارات من المستخدم
     if (window.OneSignal) {
+      console.log('Requesting notifications...');
       window.OneSignal.push(function () {
         window.OneSignal.showSlidedownPrompt(); // عرض المطالبة للمستخدم
       });
+    } else {
+      console.error('OneSignal is not initialized!');
     }
   };
 
   const handleSendNotification = () => {
-    // إرسال إشعار يدويًا
     if (window.OneSignal) {
       window.OneSignal.push(function () {
         window.OneSignal.sendSelfNotification(
