@@ -129,8 +129,8 @@ function Messages() {
             <div className="message-box" >
             <p className="">{x.message}</p>
             </div>
-            <div className="message-box" >
-            <audio controls src={x.voice}></audio>
+            <div className="" >
+                {x.voice == "false" ? "" : <><audio className="w-full" controls src={x.voice}></audio></>}
             </div>
             <div className="flex justify-between">
             <button className="reply-btn">من؟</button>
