@@ -39,15 +39,7 @@ function App() {
         // عرض نافذة المطالبة بالإشعارات يدويًا
         OneSignal.showSlidedownPrompt();
 
-        // تخصيص الإشعار
-        OneSignal.push(function () {
-          OneSignal.sendSelfNotification(
-            'عنوان الإشعار',
-            'وصف الإشعار',
-            'https://link-to-image.jpg', // صورة للإشعار
-            'https://link-to-open.com'  // الرابط الذي يفتح عند النقر على الإشعار
-          );
-        });
+        
       });
     }
   }, []);
