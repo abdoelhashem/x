@@ -19,17 +19,17 @@ function App() {
 
         // التحقق من حالة الاشتراك عند تحميل الصفحة
         window.OneSignal.getSubscription().then(function (isSubscribed) {
+          console.log('Subscription status:', isSubscribed);
           setIsSubscribed(isSubscribed);
         });
 
         // التعامل مع الاشتراك/الإلغاء
         window.OneSignal.on('subscriptionChange', function (isSubscribed) {
+          console.log('Subscription changed:', isSubscribed);
           setIsSubscribed(isSubscribed);
           if (isSubscribed) {
-            console.log('تم تفعيل الإشعارات!');
             alert('تم تفعيل الإشعارات بنجاح!');
           } else {
-            console.log('تم رفض الإشعارات!');
             alert('تم رفض الإشعارات!');
           }
         });
@@ -43,7 +43,10 @@ function App() {
     if (window.OneSignal) {
       console.log('Requesting notifications...');
       window.OneSignal.push(function () {
+        // تحقق إذا كانت المطالبة ستظهر أم لا
+        console.log('Before showing prompt');
         window.OneSignal.showSlidedownPrompt(); // عرض المطالبة للمستخدم
+        console.log('Prompt shown');
       });
     } else {
       console.error('OneSignal is not initialized!');
