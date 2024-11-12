@@ -10,7 +10,7 @@ function App() {
       OneSignal.push(function () {
         // تهيئة OneSignal
         OneSignal.init({
-          appId: 'YOUR_APP_ID', // استبدل هذا بمعرف التطبيق الخاص بك
+          appId: 'ab1fe121-df44-4a43-a3b4-e112444f195a', // استبدل هذا بمعرف التطبيق الخاص بك
           notifyButton: {
             enable: true, // تفعيل زر الإشعارات
             position: 'bottom-left', // وضع الزر
