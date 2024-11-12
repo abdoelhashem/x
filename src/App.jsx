@@ -44,9 +44,15 @@ function App() {
       console.log('Requesting notifications...');
       window.OneSignal.push(function () {
         // تحقق إذا كانت المطالبة ستظهر أم لا
-        console.log('Before showing prompt');
-        window.OneSignal.showSlidedownPrompt(); // عرض المطالبة للمستخدم
-        console.log('Prompt shown');
+        window.OneSignal.getSubscription().then(function (isSubscribed) {
+          if (!isSubscribed) {
+            console.log('Before showing prompt');
+            window.OneSignal.showSlidedownPrompt(); // عرض المطالبة للمستخدم إذا لم يكن مشتركًا
+            console.log('Prompt shown');
+          } else {
+            console.log('User is already subscribed');
+          }
+        });
       });
     } else {
       console.error('OneSignal is not initialized!');
