@@ -19,10 +19,6 @@ function App() {
         // التحقق من حالة الاشتراك عند تحميل الصفحة
         window.OneSignal.getSubscription().then(function (isSubscribed) {
           setIsSubscribed(isSubscribed);
-          // إذا كان غير مشترك، نعرض المطالبة
-          if (!isSubscribed) {
-            window.OneSignal.showSlidedownPrompt();
-          }
         });
 
         // التعامل مع الاشتراك/الإلغاء
@@ -34,14 +30,20 @@ function App() {
           } else {
             console.log('تم رفض الإشعارات!');
             alert('تم رفض الإشعارات!');
-
-            // عرض المطالبة فورًا بعد الرفض
-            window.OneSignal.showSlidedownPrompt(); // نعرض المطالبة مباشرة بعد الرفض
           }
         });
       });
     }
   }, []); // التأكد من أن التأثير يحدث مرة واحدة فقط عند تحميل الصفحة
+
+  const handleRequestNotifications = () => {
+    // طلب الاشتراك في الإشعارات من المستخدم
+    if (window.OneSignal) {
+      window.OneSignal.push(function () {
+        window.OneSignal.showSlidedownPrompt(); // عرض المطالبة للمستخدم
+      });
+    }
+  };
 
   const handleSendNotification = () => {
     // إرسال إشعار يدويًا
@@ -67,6 +69,9 @@ function App() {
       </Container>
 
       <div>
+        <button onClick={handleRequestNotifications}>
+          طلب الإشعارات
+        </button>
         <button onClick={handleSendNotification} disabled={!isSubscribed}>
           إرسال إشعار
         </button>
