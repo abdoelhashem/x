@@ -6,6 +6,7 @@ function Messages() {
     const [loader,setLoader] = useState(true);
     const [aler,setAler] = useState("");
     const [inp,setInp] = useState("");
+    const [vx,setVx] = useState("");
 
     useEffect(() => {
         fetch("https://abdoelhashem.pythonanywhere.com/messages", {
@@ -143,7 +144,7 @@ function Messages() {
     'If-Modified-Since': new Date().toISOString()
   }
 }).then(res => res.json()).then(d => {
-                    fetch(`https://abdoelhashem.pythonanywhere.com/edit?key=reply&newtxt=&id=${x.id}`, {
+                    fetch(`https://abdoelhashem.pythonanywhere.com/edit?key=reply&newtxt=${vx}&id=${x.id}`, {
   method: 'GET',
   headers: {
     'Cache-Control': 'no-cache',
