@@ -143,7 +143,7 @@ function Messages() {
     'If-Modified-Since': new Date().toISOString()
   }
 }).then(res => res.json()).then(d => {
-                    fetch(`https://abdoelhashem.pythonanywhere.com/edit?key=reply&newtxt=""&id=${x.id}`, {
+                    fetch(`https://abdoelhashem.pythonanywhere.com/edit?key=reply&newtxt=&id=${x.id}`, {
   method: 'GET',
   headers: {
     'Cache-Control': 'no-cache',
