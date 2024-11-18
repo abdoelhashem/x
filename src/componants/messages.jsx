@@ -6,7 +6,7 @@ function Messages() {
     const [loader,setLoader] = useState(true);
     const [aler,setAler] = useState("");
     const [inp,setInp] = useState("");
-    const [vx,setVx] = useState("");
+    const [vx,setVx] = useState(" ");
 
     useEffect(() => {
         fetch("https://abdoelhashem.pythonanywhere.com/messages", {
@@ -164,7 +164,7 @@ function Messages() {
                     <button className="reply-btn" onClick={() => remov(x.id)}>حذف</button>
                 </div>
             </div>
-            {x.reply == "" ? "" : <><div className="message-footer">
+            {x.reply == " " ? "" : <><div className="message-footer">
                     الرد :
                 </div><div className="message-box">
                         <p className="">{x.reply}</p>
