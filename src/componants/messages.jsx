@@ -8,7 +8,7 @@ function Messages() {
     const [inp,setInp] = useState("");
 
     useEffect(() => {
-        fetch("https://cors-anywhere.herokuapp.com/http://mrhok.serv00.net/badrphphp/abd5/messages.json", {
+        fetch("https://abdoelhashem.pythonanywhere.com/messages", {
   method: 'GET',
   headers: {
     'Cache-Control': 'no-cache',
@@ -25,7 +25,7 @@ function Messages() {
 
 
     const remov = (id) => {
-        fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=delete&id=${id}`, {
+        fetch(`https://abdoelhashem.pythonanywhere.com/delete?id=${id}`, {
   method: 'GET',
   headers: {
     'Cache-Control': 'no-cache',
@@ -90,7 +90,7 @@ function Messages() {
 
                 <div className="gap-2 flex">
                     <button className="reply-btn" onClick={() => {
-                        fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=edit&key=show&newtxt=true&id=${aler}`, {
+                        fetch(`https://abdoelhashem.pythonanywhere.com/edit?key=show&newtxt=true&id=${aler}`, {
   method: 'GET',
   headers: {
     'Cache-Control': 'no-cache',
@@ -99,7 +99,7 @@ function Messages() {
   }
 }).then(res => res.json()).then(d => {
                         })
-                        fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=edit&key=reply&newtxt=${inp}&id=${aler}`, {
+                        fetch(`https://abdoelhashem.pythonanywhere.com/edit?key=reply&newtxt=${inp}&id=${aler}`, {
   method: 'GET',
   headers: {
     'Cache-Control': 'no-cache',
@@ -135,7 +135,7 @@ function Messages() {
             <div className="flex justify-between">
             <button className="reply-btn">من؟</button>
             <button onClick={() => {
-                fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=edit&key=show&newtxt=false&id=${x.id}`, {
+                fetch(`https://abdoelhashem.pythonanywhere.com/edit?key=show&newtxt=false&id=${x.id}`, {
   method: 'GET',
   headers: {
     'Cache-Control': 'no-cache',
@@ -143,7 +143,7 @@ function Messages() {
     'If-Modified-Since': new Date().toISOString()
   }
 }).then(res => res.json()).then(d => {
-                    fetch(`https://cors-anywhere.herokuapp.com/https://mrhok.serv00.net/badrphphp/abd5/x3d.php?action=edit&key=reply&newtxt=&id=${x.id}`, {
+                    fetch(`https://abdoelhashem.pythonanywhere.com/edit?key=reply&newtxt=&id=${x.id}`, {
   method: 'GET',
   headers: {
     'Cache-Control': 'no-cache',
