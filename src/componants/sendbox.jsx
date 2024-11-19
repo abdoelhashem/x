@@ -36,7 +36,7 @@ const Sendbox = () => {
     
             
             <button className="send-btn" onClick={delate_all}>{ine ? 'delate all' : <div className="flex justify-center"><div class="loader vv"></div></div>}</button>
-            <div className="message-footer pt-2">الزيارات : {vist}</div>
+            <div className="message-footer pt-3">الزيارات : {vist}</div>
         </div>
 
     )
