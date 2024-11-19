@@ -6,10 +6,7 @@ const Sendbox = () => {
     const [ip,setIp] = useState("");
     const [vist,setVist] = useState("");
     useEffect(() => {
-        fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => setIp(data.ip))
-        .catch(error => console.error("حدث خطأ:", error));
+        
 
         fetch('https://abdoelhashem.pythonanywhere.com/views')
         .then(response => response.json())
